@@ -18,13 +18,8 @@ connectCloudinary()
 // Middlewares
 app.use(express.json())
 
-app.use(cors({
-    origin: [
-        'http://localhost:5173',   // Vite frontend
-        'http://localhost:3000',   // fallback
-    ],
-    credentials: true
-}))
+app.use(cors())
+
 
 // API routes
 app.use('/api/user', userRouter)
