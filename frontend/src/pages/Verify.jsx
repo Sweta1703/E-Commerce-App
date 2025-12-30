@@ -7,30 +7,33 @@ import { ShopContext } from '../context/ShopContext'
 const Verify = () => {
   const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext)
   const [searchParams] = useSearchParams()
+
   const success = searchParams.get('success')
   const orderId = searchParams.get('orderId')
-  const userId = localStorage.getItem('userId') // ✅ Add this
 
   const verifyPayment = async () => {
     try {
-      if (!token) return
+      if (!token || !orderId) return
+
       const response = await axios.post(
         `${backendUrl}/api/order/verifyStripe`,
-        { success, orderId, userId }, // ✅ Include userId
+        { success, orderId },
         { headers: { token } }
       )
 
+
       if (response.data.success) {
         setCartItems({})
-        toast.success("Payment verified successfully!")
+        toast.success('Payment verified successfully!')
         navigate('/orders')
       } else {
-        toast.error("Payment failed or cancelled")
+        toast.error('Payment failed')
         navigate('/cart')
       }
     } catch (error) {
       console.log(error)
-      toast.error("Verification failed: " + error.message)
+      toast.error('Verification error')
+      navigate('/cart')
     }
   }
 
@@ -40,7 +43,7 @@ const Verify = () => {
 
   return (
     <div className="flex justify-center items-center h-[80vh] text-xl text-gray-600">
-      Please wait, verifying your payment...
+      Verifying your payment...
     </div>
   )
 }

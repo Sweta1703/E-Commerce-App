@@ -8,23 +8,34 @@ import productRouter from './routes/productRoute.js'
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
 
-//App Config
+// App Config
 const app = express()
-const port = process.env.port || 4000
+const port = process.env.PORT || 4000
+
 connectDB()
 connectCloudinary()
 
-//middlewares
-app.use(express.json());
-app.use(cors());
+// Middlewares
+app.use(express.json())
 
-//api endpoints
-app.use('/api/user',userRouter);
-app.use('/api/product',productRouter)
-app.use('/api/cart',cartRouter)
-app.use('/api/order',orderRouter)
-app.get('/',(req,res)=>{
+app.use(cors({
+    origin: [
+        'http://localhost:5173',   // Vite frontend
+        'http://localhost:3000',   // fallback
+    ],
+    credentials: true
+}))
+
+// API routes
+app.use('/api/user', userRouter)
+app.use('/api/product', productRouter)
+app.use('/api/cart', cartRouter)
+app.use('/api/order', orderRouter)
+
+app.get('/', (req, res) => {
     res.send("API Working")
 })
 
-app.listen(port, ()=> console.log('Server started on PORT : '+port));
+app.listen(port, () => {
+    console.log(`Server started on PORT : ${port}`)
+})
