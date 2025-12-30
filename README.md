@@ -1,4 +1,4 @@
-# MERN E-commerce Application 🛒
+# FOREVER E-commerce Application 🛒
 
 A full-featured, modern E-commerce platform built with the MERN stack (MongoDB, Express, React, Node.js). This application features a sleek frontend for users, a robust backend API, and a dedicated admin panel for product and order management.
 
