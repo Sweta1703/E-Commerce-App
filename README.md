@@ -4,8 +4,9 @@ A full-featured, modern E-commerce platform built with the MERN stack (MongoDB, 
 
 ## 🚀 Live Demo
 
-- **Frontend:** [Click Here](https://e-commerce-app-frontend-woad.vercel.app)
-- **Backend API:** [View API](https://e-commerce-app-backend-git-main-sensibleinsane05-8339s-projects.vercel.app)
+- **Frontend:** [Click Here](https://e-commerce-app-frontend-puce.vercel.app/)
+- **Backend API:** [View API](https://e-commerce-app-backend-eta.vercel.app/)
+- **Admin Panel:** [View Admin](https://e-commerce-app-admin-ten.vercel.app/)
 
 ---
 
